@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Paper from './home/paper'
-
-import Button from 'material-ui/Button';
+import Home from './components/Home'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Paper />
+        <Home />
       </div>
     );
   }

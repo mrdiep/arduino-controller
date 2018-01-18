@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+
 import { withStyles } from 'material-ui/styles';
+
 import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+
 import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
@@ -9,29 +14,36 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
-    marginLeft:16,
-    marginRight:16,
   }),
 });
 
-function PaperSheet(props) {
+function Home(props) {
   const { classes } = props;
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography type="headline" component="h3">
-          Controller
+          Header
         </Typography>
         <Typography component="p">
-          what
+          title
         </Typography>
       </Paper>
     </div>
   );
 }
 
-PaperSheet.propTypes = {
+Home.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PaperSheet);
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+const connectedComponentRedux = connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withStyles(styles)(connectedComponentRedux);
