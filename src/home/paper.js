@@ -9,6 +9,8 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
+    marginLeft:16,
+    marginRight:16,
   }),
 });
 
@@ -18,10 +20,10 @@ function PaperSheet(props) {
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography type="headline" component="h3">
-          This is a sheet of paper.
+          Controller
         </Typography>
         <Typography component="p">
-          Paper can be used to build surface or other elements for your application.
+          what
         </Typography>
       </Paper>
     </div>
