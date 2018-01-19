@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import AppReducer from './AppReducer';
+import HomeReducers from '../components/Home/HomeReducers';
 
 export default combineReducers({
-  app: AppReducer
+  home: HomeReducers
 });

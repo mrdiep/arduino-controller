@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import thunk from 'redux-thunk';
+
 import './index.css';
 import App from './App';
 import HomeAppReducers from './reducers'
@@ -13,7 +15,7 @@ import crashReporter from './middlwares/crashReporter';
 
 let store = createStore(
   HomeAppReducers,
-  applyMiddleware(logger, crashReporter)
+  applyMiddleware(logger, crashReporter, thunk)
 );
 
 var provider = (

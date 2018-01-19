@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 import { withStyles } from 'material-ui/styles';
 
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
+
+import * as HomeActions from './HomeActions';
 
 import Typography from 'material-ui/Typography';
 
@@ -26,7 +29,8 @@ function Home(props) {
           Header
         </Typography>
         <Typography component="p">
-          title
+          <Button onClick={props.homeActions.increaseNumber}>CLICK ME</Button>
+          Counter clicked = {props.number}
         </Typography>
       </Paper>
     </div>
@@ -38,11 +42,16 @@ Home.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {}
+  console.log(state);
+  return {
+    number: state.home.number
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    homeActions: bindActionCreators(HomeActions, dispatch)
+  }
 }
 
 const connectedComponentRedux = connect(mapStateToProps, mapDispatchToProps)(Home);
