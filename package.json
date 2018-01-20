@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "install": "(cd react-ui && yarn) && (cd server && yarn)",
-	  "start": "concurrently \"cd react-ui && yarn build\" \"cd server && yarn start\""
+      "install": "(cd react-ui && npm install) && (cd server && npm install)",
+	  "start": "concurrently \"cd react-ui && npm run build\" \"cd server && npm run start\""
 	},
   "repository": {
     "type": "git",
