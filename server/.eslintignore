@@ -1,0 +1,9 @@
+.vscode
+.idea
+coverage
+dist
+generators
+node_modules
+obj
+typings
+npm-debug.log
