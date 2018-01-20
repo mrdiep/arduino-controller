@@ -6,7 +6,7 @@ const {
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.send('hello');
+  res.sendFile('../../react-ui/build/index.html')
 })
 
 export default router;
