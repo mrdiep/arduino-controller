@@ -3,6 +3,7 @@ import compress from 'compression';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
+import path from 'path';
 
 import homeController from './homeController';
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(helmet());
 
 app.use('/', homeController);
+app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
 // START AND STOP
 const server = app.listen(httpPort, () => {});
