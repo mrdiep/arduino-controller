@@ -9,11 +9,10 @@ import path from 'path';
 import homeController from './homeController';
 import socketController from './socketController';
 
-const httpPort = process.env.PORT || 3001;
+const httpPort = process.env.PORT || 3003;
 
 const app = express();
 
-socketController(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -28,7 +27,10 @@ app.use('/', homeController);
 app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
 // START AND STOP
-const server = app.listen(httpPort, () => {});
+//const server = app.listen(httpPort, () => {});
+
+const server = socketController(app);
+server.listen(httpPort);
 
 process.on('SIGINT', () => {
   server.close();

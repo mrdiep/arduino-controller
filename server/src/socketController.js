@@ -1,8 +1,9 @@
-import { Server } from 'http';
-import socketIo from 'socket.io';
+import { createServer } from 'https';
+import SocketIo from 'socket.io';
 
 export default function controller(app) {
-  var io = socketIo(Server(app));
+  var server = createServer(app);
+  var io = new SocketIo(server);
   console.log('listen client...');
 
   io.on('connection', function(client) {
@@ -12,4 +13,6 @@ export default function controller(app) {
       console.log(data);
     });
   })
+
+  return server;
 };

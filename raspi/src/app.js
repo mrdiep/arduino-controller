@@ -1,4 +1,4 @@
-var socket = require('socket.io-client')('http://192.168.1.20:3001/', { reconnect: true });
+var socket = require('socket.io-client')('http://localhost:3004', { reconnect: true });
 console.log('kaka')
 socket.on('connect', function(){
     console.log('connected');
