@@ -1,7 +1,7 @@
 {
   "name": "smart-home-control",
   "version": "1.0.0",
-  "description": "",
+  "description": "a",
   "main": "index.js",
   "scripts": {
       "install": "(cd react-ui && npm install) && (cd server && npm install)",
