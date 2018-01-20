@@ -5,11 +5,15 @@ import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
 
+
 import homeController from './homeController';
+import socketController from './socketController';
 
 const httpPort = process.env.PORT || 3001;
 
 const app = express();
+
+socketController(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
