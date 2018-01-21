@@ -9,6 +9,7 @@ export default function controller(app) {
 
   io.on('connection', function(client) {
     console.log('Client connected...');
+    console.log(client);
 
     client.on('join', function(data) {
       console.log(data);
@@ -24,5 +25,5 @@ export default function controller(app) {
     })
   })
 
-  return server;
+  return { Server: server, SocketIO: io};
 };

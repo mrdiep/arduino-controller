@@ -4,10 +4,20 @@ const {
 
 import path from 'path';
 
-const router = Router();
+export default function homeRouter(socketIO) {
+  return () => {
+    const router = Router();
 
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../react-ui/build/index.html'));
-})
+    router.get('/', (req, res) => {
+      res.sendFile(path.join(__dirname, '../../react-ui/build/index.html'));
+    })
 
-export default router;
+    router.post('/control', (req, res) => {
+      var requestModel = req.body;
+      socketIO
+      console.log(requestModel);
+    })
+
+    return router;
+  }
+};

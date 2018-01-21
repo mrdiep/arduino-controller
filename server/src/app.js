@@ -12,7 +12,7 @@ import socketController from './socketController';
 const httpPort = process.env.PORT || 3004;
 
 const app = express();
-
+const { Server, SocketIO } = socketController(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -23,17 +23,16 @@ app.use(compress());
 app.use(cookieParser());
 app.use(helmet());
 
-app.use('/', homeController);
+app.use('/', homeController(SocketIO));
 app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
 // START AND STOP
 //const server = app.listen(httpPort, () => {});
 
-const server = socketController(app);
-server.listen(httpPort);
+Server.listen(httpPort);
 
 process.on('SIGINT', () => {
-  server.close();
+  Server.close();
   process.exit();
 });
 
