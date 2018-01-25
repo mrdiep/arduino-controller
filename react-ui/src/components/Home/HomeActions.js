@@ -13,3 +13,12 @@ export function increaseNumber() {
     type: prefixAction('INCREASE')
   }
 }
+
+export function changePadPos(x, y, zoneName) {
+  return {
+    type: prefixAction('CHANGE_PADPOS'),
+    x,
+    y,
+    zoneName
+  }
+}
