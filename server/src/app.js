@@ -8,7 +8,7 @@ import path from 'path';
 import homeController from './homeController';
 import socketController from './socketController';
 
-const httpPort = process.env.PORT || 3004;
+const httpPort = process.env.PORT || 3003;
 
 const app = express();
 const { server, SocketIO } = socketController(app);
@@ -20,7 +20,7 @@ app.use(compress());
 app.use(cookieParser());
 app.use(helmet());
 
-app.use('/', homeController(SocketIO));
+app.use('/', homeController);
 app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
 server.listen(httpPort, err => {

@@ -8,15 +8,15 @@ export default function controller(app) {
   var carId;
 
   io.on('connection', function(client) {
-    console.log('Client connected...');
-    console.log(client);
+    console.log('Client connected...: ' + client.id);
 
     client.on('join', function(data) {
       console.log(data);
     });
 
-    client.on('car-connect', data => {
+    client.on('car-connect', carInfo => {
       carId = client.id;
+      console.log(carInfo.message);
     })
 
     client.on('move-now', data => {

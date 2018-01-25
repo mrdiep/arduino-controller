@@ -6,7 +6,6 @@ export default function HomeReducers(state = {number : 0, padPos: {}}, action) {
   switch (action.type) {
     case 'HOME_CHANGE_PROP':
       newState[action.propName] = action.value;
-
     case 'HOME_INCREASE':
       newState.number = newState.number + 1;
     case 'HOME_CHANGE_PADPOS':

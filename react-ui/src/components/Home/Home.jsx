@@ -39,8 +39,10 @@ function Home(props) {
           Hello
         </Typography>
         <Typography component="p">
-          <Button onClick={props.homeActions.increaseNumber}>CLICK ME</Button>
-          Counter clicked = {props.number}
+          <Button onClick={()=>props.homeActions.changeDirection('forward')}>Forward</Button>
+          <Button onClick={()=>props.homeActions.changeDirection('reverse')}>Reverse</Button>
+          <Button onClick={()=>props.homeActions.changeDirection('left')}>Left</Button>
+          <Button onClick={()=>props.homeActions.changeDirection('right')}>Right</Button>
         </Typography>
       </Paper>
 

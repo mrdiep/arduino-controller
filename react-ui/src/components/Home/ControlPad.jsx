@@ -6,12 +6,8 @@ import { bindActionCreators } from 'redux';
 import { withStyles } from 'material-ui/styles';
 
 import Paper from 'material-ui/Paper';
-import Button from 'material-ui/Button';
 
 import * as HomeActions from './HomeActions';
-
-import Typography from 'material-ui/Typography';
-import ReactCursorPosition from 'react-cursor-position';
 
 const styles = theme => ({
   controlPad: theme.mixins.gutters({
@@ -30,7 +26,6 @@ const styles = theme => ({
   }),
   divInner2: theme.mixins.gutters({
     marginLeft:0,
-    marginTop: 70,
     padding: '0!important',
     marginTop: -280,
     width: 420,
@@ -40,7 +35,7 @@ const styles = theme => ({
 });
 
 function ControlPad(props) {
-  const { classes, padPos } = props;
+  const { classes } = props;
 
   function onMouseMove(x, y) {
       
@@ -98,16 +93,16 @@ function ControlPad(props) {
   }
 
   const {
-    detectedEnvironment: {
-      isMouseDetected = false,
-      isTouchDetected = false
-    } = {},
-    elementDimensions: {
-      width = 0,
-      height = 0
-    } = {},
-    isActive = false,
-    isPositionOutside = false,
+    // detectedEnvironment: {
+    //   isMouseDetected = false,
+    //   isTouchDetected = false
+    // } = {},
+    // elementDimensions: {
+    //   width = 0,
+    //   height = 0
+    // } = {},
+    // isActive = false,
+    // isPositionOutside = false,
     position: {
       x = 0,
       y = 0
@@ -132,7 +127,6 @@ ControlPad.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     number: state.home.number,
     padPos: state.home.padPos,
