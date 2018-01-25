@@ -12,6 +12,10 @@ export default function controller(app) {
     client.on('join', function(data) {
       console.log(data);
     });
+
+    client.on('move', data => {
+      console.log(data);
+    })
   })
 
   return server;

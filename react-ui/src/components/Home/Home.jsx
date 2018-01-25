@@ -56,10 +56,12 @@ function Home(props) {
     return x < 210 ? LEFT : RIGHT;
   }
 
-  var last;
   function onMouseMove(e) {
     var x = e.clientX  -30;
     var y  = e.clientY - 216;
+
+    console.log(e.clientY);
+    
 
     var isInStopZoneX = isStopZone(x);
     var isInStopZoneY = isStopZone(y);
@@ -94,6 +96,9 @@ function Home(props) {
     } else if (!isInTopZone && !isInLeftZone) {
       zoneName = 'BOTTOM-RIGHT';
     }
+
+    //newX = Math.floor(newX * 255 / 140);
+    //newY =  Math.floor(newY * 255 / 140);
 
     props.homeActions.changePadPos(newX, newY, zoneName);
   }

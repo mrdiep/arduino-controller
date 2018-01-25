@@ -1,3 +1,5 @@
+import SocketClient from '../../socketClient/socketClient';
+
 const prefixAction = actionType => 'HOME_' + actionType;
 
 export function changePropValue(propName, value) {
@@ -15,10 +17,23 @@ export function increaseNumber() {
 }
 
 export function changePadPos(x, y, zoneName) {
-  return {
+  var payload = {
     type: prefixAction('CHANGE_PADPOS'),
     x,
     y,
     zoneName
+  }
+
+  return (dispatch, getState) => {
+    var padPos = getState().home.padPos;
+
+
+    if (padPos.x !== payload.x || padPos.y !== payload.y) {
+      SocketClient.emit('move', {
+        left: x,
+        right: y
+      });
+      dispatch(payload);
+    }
   }
 }
