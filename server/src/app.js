@@ -23,8 +23,15 @@ app.use(helmet());
 app.use('/', homeController(SocketIO));
 app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
-server.listen(httpPort);
-console.log('Server start at port: ' + httpPort);
+server.listen(httpPort, err => {
+  if (err) {
+    console.log('Error starting server' + err);
+    return;
+  }
+
+  console.log('Server start at port: ' + httpPort);
+});
+
 
 process.on('SIGINT', () => {
   server.close();
