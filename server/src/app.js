@@ -9,7 +9,7 @@ import path from 'path';
 import homeController from './homeController';
 import socketController from './socketController';
 
-const httpPort = process.env.PORT || 3003;
+const httpPort = process.env.PORT || 3004;
 
 const app = express();
 

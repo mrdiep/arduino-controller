@@ -5,6 +5,7 @@ export default function controller(app) {
   var server = createServer(app);
   var io = new SocketIo(server);
   console.log('listen client...');
+  var carId;
 
   io.on('connection', function(client) {
     console.log('Client connected...');
@@ -13,8 +14,13 @@ export default function controller(app) {
       console.log(data);
     });
 
-    client.on('move', data => {
+    client.on('car-connect', data => {
+      carId = client.id;
+    })
+
+    client.on('move-now', data => {
       console.log(data);
+      client.to(carId).emit('move', data);
     })
   })
 

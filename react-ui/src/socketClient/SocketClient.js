@@ -10,10 +10,13 @@ socket.on('disconnect', function(){
   console.log('disconnect');
 });
 
-socket.on('move', data => {
-  console.log(data);
-})
-
 socket.emit('event to server', { hello: 'world' });
 
-export default socket;
+function moveNow(x, y) {
+  socket.emit('move-now', {
+    left: x,
+    right: y
+  });
+}
+
+export default { socket, moveNow };
