@@ -4,7 +4,7 @@ import SocketIo from 'socket.io';
 export default function controller(app) {
   var server = createServer(app);
   var io = new SocketIo(server);
-  console.log('listen client...');
+  console.log('Socket is waiting a client...');
   var carId;
 
   io.on('connection', function(client) {
@@ -25,5 +25,5 @@ export default function controller(app) {
     })
   })
 
-  return { Server: server, SocketIO: io};
+  return { server, SocketIO: io};
 };

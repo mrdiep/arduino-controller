@@ -5,19 +5,16 @@ import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
 
-
 import homeController from './homeController';
 import socketController from './socketController';
 
 const httpPort = process.env.PORT || 3004;
 
 const app = express();
-const { Server, SocketIO } = socketController(app);
+const { server, SocketIO } = socketController(app);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(compress());
 app.use(cookieParser());
@@ -26,13 +23,11 @@ app.use(helmet());
 app.use('/', homeController(SocketIO));
 app.use(express.static(path.join(__dirname, '../../react-ui/build')));
 
-// START AND STOP
-//const server = app.listen(httpPort, () => {});
-
-Server.listen(httpPort);
+server.listen(httpPort);
+console.log('Server start at port: ' + httpPort);
 
 process.on('SIGINT', () => {
-  Server.close();
+  server.close();
   process.exit();
 });
 

@@ -12,11 +12,9 @@ socket.on('disconnect', function(){
 
 socket.emit('event to server', { hello: 'world' });
 
-function moveNow(x, y) {
+export function moveNow(x, y) {
   socket.emit('move-now', {
     left: x,
     right: y
   });
 }
-
-export default { socket, moveNow };
