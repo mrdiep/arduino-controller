@@ -36,7 +36,7 @@ function Home(props) {
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography type="headline" component="h3">
-          Header
+          Hello
         </Typography>
         <Typography component="p">
           <Button onClick={props.homeActions.increaseNumber}>CLICK ME</Button>
