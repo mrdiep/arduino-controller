@@ -1,4 +1,4 @@
-import SocketClient from '../../socketClient/socketClient';
+//import SocketClient from '../../socketClient/socketClient';
 
 const prefixAction = actionType => 'HOME_' + actionType;
 
@@ -29,10 +29,10 @@ export function changePadPos(x, y, zoneName) {
 
 
     if (padPos.x !== payload.x || padPos.y !== payload.y) {
-      SocketClient.emit('move', {
-        left: x,
-        right: y
-      });
+      // SocketClient.emit('move', {
+      //   left: x,
+      //   right: y
+      // });
       dispatch(payload);
     }
   }
