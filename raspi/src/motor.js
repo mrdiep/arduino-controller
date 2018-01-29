@@ -68,23 +68,7 @@ board.on("ready", function () {
     motor2Move(-speed);
   }
 
-  forward(105);
-
-  //forward(199);
-
-  var socket = require('socket.io-client')('http://localhost:3003', {
-    reconnect: true
-  });
-
-  socket.on('connect', function () {
-    console.log('connected');
-    socket.emit('car-connect', {
-      message: 'Hello server. I am a raspbian car'
-    });
-  });
-
-  socket.on('move', function (data) {
-    console.log(data);
+  function moveNow(data) {
     switch (data.type) {
       case 'forward':
         motor1Move(data.speed);
@@ -97,17 +81,60 @@ board.on("ready", function () {
       case 'left':
         motor1Move(data.speed);
         motor2Move(-data.speed);
+        var lastMoveData = {
+          speed: lastMove.speed,
+          type: lastMove.type,
+        }
+        setTimeout(() => {
+          moveNow(lastMoveData);
+        }, 1500);
+
         break;
       case 'right':
         motor1Move(-data.speed);
         motor2Move(data.speed);
+
+        var lastMoveData = {
+          speed: lastMove.speed,
+          type: lastMove.type,
+        }
+
+        setTimeout(() => {
+          moveNow(lastMoveData);
+        }, 1500);
+        
+
         break;
       default:
         motor1Move(data.left);
         motor2Move(data.right);
       break;
     }
+
+    lastMove = data;
+  }
+  //forward(105);
+
+  //forward(199);
+
+  var socket = require('socket.io-client')('https://whispering-fjord-88916.herokuapp.com/', {
+    reconnect: true
   });
+
+  socket.on('connect', function () {
+    console.log('connected');
+    socket.emit('car-connect', {
+      message: 'Hello server. I am a raspbian car'
+    });
+  });
+
+  var lastMove = '';
+
+  socket.on('move', function (data) {
+    console.log(data);
+    moveNow(data);
+  });
+
 
   socket.on('disconnect', function () {
     console.log('disconnect');
