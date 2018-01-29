@@ -18,3 +18,11 @@ export function moveNow(x, y) {
     right: y
   });
 }
+
+
+export function moveByDirection(type, speed) {
+  socket.emit('move-now', {
+    speed,
+    type
+  });
+}

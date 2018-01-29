@@ -1,5 +1,6 @@
 import {
-  moveNow
+  moveNow,
+  moveByDirection
 } from '../../socketClient';
 
 const prefixAction = actionType => 'HOME_' + actionType;
@@ -38,20 +39,22 @@ export function changePadPos(x, y, zoneName) {
 
 export function changeDirection(type) {
   return (dispatch, getState) => {
-    switch (type) {
-      case 'forward':
-        moveNow(255, 255);
-        break;
-      case 'reverse':
-        moveNow(-255, -255);
-        break;
-      case 'left':
-        moveNow(-255, 255);
-        break;
-      case 'right':
-        moveNow(255, -255);
-        break;
-    }
+    
+    moveByDirection(type, speed);
 
+    // switch (type) {
+    //   case 'forward':
+    //   moveNow(255, 255);
+    //     break;
+    //   case 'reverse':
+    //     moveNow(-255, -255);
+    //     break;
+    //   case 'left':
+    //     moveNow(-255, 255);
+    //     break;
+    //   case 'right':
+    //     moveNow(255, -255);
+    //     break;
+    // }
   }
 }
