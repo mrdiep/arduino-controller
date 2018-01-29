@@ -43,6 +43,7 @@ function Home(props) {
           <Button onClick={()=>props.homeActions.changeDirection('reverse')}>Reverse</Button>
           <Button onClick={()=>props.homeActions.changeDirection('left')}>Left</Button>
           <Button onClick={()=>props.homeActions.changeDirection('right')}>Right</Button>
+          <Button onClick={()=>props.homeActions.changeDirection('stop')}>Stop</Button>
         </Typography>
       </Paper>
 
