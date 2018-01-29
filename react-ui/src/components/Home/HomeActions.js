@@ -40,8 +40,7 @@ export function changePadPos(x, y, zoneName) {
 export function changeDirection(type) {
   return (dispatch, getState) => {
     
-    moveByDirection(type, speed);
-
+    moveByDirection(type, 255);
     // switch (type) {
     //   case 'forward':
     //   moveNow(255, 255);
