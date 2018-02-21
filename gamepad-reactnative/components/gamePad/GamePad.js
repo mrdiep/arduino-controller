@@ -14,34 +14,14 @@ import {
 class GamePad extends Component {
   render() {
     return (
-      <View style={[styles.container, styles.horizontal]}>
-        <Text style={{fontWeight: 'bold'}}>
-          I am bold
-          <Text style={{color: 'red'}}>
-            and red
-          </Text>
-        </Text>
+      <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+        <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+        <View style={{flex: 3, backgroundColor: 'steelblue'}} />
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10
-  },
-  titleText: {
-    justifyContent: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  }
-})
 
 const mapStateToProps = state => {
   return {
