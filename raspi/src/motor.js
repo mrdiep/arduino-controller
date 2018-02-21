@@ -79,8 +79,8 @@ board.on("ready", function () {
         motor2Move(-data.speed);
         break;
       case 'left':
-        motor1Move(data.speed);
-        motor2Move(-data.speed);
+        motor1Move(-data.speed);
+        motor2Move(data.speed);
         var lastMoveData = {
           speed: lastMove.speed,
           type: lastMove.type,
@@ -91,8 +91,8 @@ board.on("ready", function () {
 
         break;
       case 'right':
-        motor1Move(-data.speed);
-        motor2Move(data.speed);
+        motor1Move(data.speed);
+        motor2Move(-data.speed);
 
         var lastMoveData = {
           speed: lastMove.speed,
